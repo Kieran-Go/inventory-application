@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games Inventory - <%= heading %></title>
+    <link rel="stylesheet" href="/styles/gameList.css">
+</head>
+<body>
+    <h1><%= heading %></h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Platform</th>
+                <th>Release Date</th>
+                <th>Developer(s)</th>
+                <th>Genre</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% games.forEach(game => { %>
+                <tr>
+                    <td><%= game.title %></td>
+                    <td><%= game.platform %></td>
+                    <td><%= game.release_date?.toISOString().split('T')[0] || 'N/A' %></td>
+                    <td>
+                        <% if (game.developers && game.developers.length > 0) { %>
+                            <%= game.developers.join(", ") %>
+                        <% } else { %>
+                            <%= 'Null' %>
+                        <% } %>
+                    </td>
+                    <td><%= game.genre_name || 'Null' %></td>
+                    <td class="buttons">
+                        <a class="button-link" href="/games/<%= game.id %>/edit">Edit</a>
+                        <form action="/games/<%= game.id %>/delete?_method=DELETE" method="POST">
+                            <button type="submit" class="delete-button">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+
+    <a href="/">
+        <button class="back-button">Go back</button>
+    </a>
+</body>
+</html>

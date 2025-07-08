@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games Inventory - Developers</title>
+    <link rel="stylesheet" href="/styles/categoryList.css">
+</head>
+<body>
+    <h1>Developers</h1>
+
+    <% devs.forEach(dev => { %>
+        <div class="category-container">
+            <a href="/developers/<%= dev.id %>"><%= dev.name %></a><br>
+            <form action="/developers/<%= dev.id %>/delete?_method=DELETE" method="POST">
+                <button type="submit" class="delete-button">Delete</button>
+            </form>
+        </div>
+    <% }) %>
+
+    <a href="/">
+        <button class="back-button">Go back</button>
+    </a>
+</body>
+</html>

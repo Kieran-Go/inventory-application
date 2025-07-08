@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games Inventory - Genres</title>
+    <link rel="stylesheet" href="/styles/categoryList.css">
+</head>
+<body>
+    <h1>Genres</h1>
+
+    <% genres.forEach(genre => { %>
+        <div class="category-container">
+            <a href="/genres/<%= genre.id %>"><%= genre.name %></a><br>
+            <form action="/genres/<%= genre.id %>/delete?_method=DELETE" method="POST">
+                <button type="submit" class="delete-button">Delete</button>
+            </form>
+        </div>
+    <% }) %>
+
+    <a href="/">
+        <button class="back-button">Go back</button>
+    </a>
+</body>
+</html>
