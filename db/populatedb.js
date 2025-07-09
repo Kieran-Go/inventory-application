@@ -1,7 +1,7 @@
 require("dotenv").config();
 const { Client } = require("pg");
 
-const dbUrl = process.env.DB_URL;
+const dbUrl = process.env.DATABASE_URL;
 if (!dbUrl) {
     console.error("No DB_URL found in .env");
     process.exit(1);
